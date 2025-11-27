@@ -10,10 +10,12 @@
     </parent>
     <groupId>com.zzyweb</groupId>
     <artifactId>myblog-backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <name>myblog-backend</name>
     <description>myblog-backend</description>
     <url/>
+    <!--    多模块，父项目打包必须是pom-->
+    <packaging>pom</packaging>
     <licenses>
         <license/>
     </licenses>
@@ -26,29 +28,76 @@
         <tag/>
         <url/>
     </scm>
+    <!--    子模块管理-->
+    <modules>
+        <module>myblog-web</module>
+        <module>myblog-module-admin</module>
+        <module>myblog-module-common</module>
+    </modules>
     <properties>
+        <revision>0.0.1-SNAPSHOT</revision>
         <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <guava.version>31.1-jre</guava.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <lombok.version>1.18.28</lombok.version>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <!--    统一依赖管理    -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.zzyweb</groupId>
+                <artifactId>myblog-module-admin</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zzyweb</groupId>
+                <artifactId>myblog-module-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+    <!--        统一插件管理-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>
