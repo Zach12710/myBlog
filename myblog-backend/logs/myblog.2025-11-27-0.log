@@ -1,0 +1,7 @@
+2025-11-27 19:33:23.682 [main] INFO  com.zzyweb.myblogweb.MyblogWebApplicationTests - Starting MyblogWebApplicationTests using Java 17.0.16 with PID 82253 (started by zhiyi in /Users/zhiyi/quanxiaoha/myBlog/myblog-backend/myblog-web)
+2025-11-27 19:33:23.682 [main] INFO  com.zzyweb.myblogweb.MyblogWebApplicationTests - The following 1 profile is active: "prod"
+2025-11-27 19:33:24.210 [main] INFO  com.zzyweb.myblogweb.MyblogWebApplicationTests - Started MyblogWebApplicationTests in 0.751 seconds (process running for 1.248)
+2025-11-27 19:33:24.587 [main] INFO  com.zzyweb.myblogweb.MyblogWebApplicationTests - 这是一行 Info 级别日志
+2025-11-27 19:33:24.588 [main] WARN  com.zzyweb.myblogweb.MyblogWebApplicationTests - 这是一行 Warn 级别日志
+2025-11-27 19:33:24.588 [main] ERROR com.zzyweb.myblogweb.MyblogWebApplicationTests - 这是一行 Error 级别日志
+2025-11-27 19:33:24.588 [main] INFO  com.zzyweb.myblogweb.MyblogWebApplicationTests - 这是一行带有占位符日志，作者：zzy
